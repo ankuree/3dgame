@@ -14,16 +14,17 @@ camera.position.setZ(30);
 renderer.render(scene, camera);
 
 
-const geometry = new THREE.TetrahedronGeometry(10, 3);
-const material = new THREE.MeshStandardMaterial({ color: 0x00ff00, wireframe: true });
+const geometry = new THREE.TetrahedronGeometry(10, 0);
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff67, wireframe: true });
 const TetrahedronGeometry = new THREE.Mesh(geometry, material);
 scene.add(TetrahedronGeometry);
 
 function animate() {
   requestAnimationFrame(animate);
   TetrahedronGeometry.rotation.x += 0.01;
-  TetrahedronGeometry.rotation.y += 0.01;
+  TetrahedronGeometry.rotation.y += 0.005;
   TetrahedronGeometry.rotation.z += 0.01;
   renderer.render(scene, camera);
 }
 
+animate();
