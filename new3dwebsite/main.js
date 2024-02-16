@@ -14,16 +14,29 @@ camera.position.setZ(30);
 renderer.render(scene, camera);
 
 
-const geometry = new THREE.ConeGeometry( 5, 20, 32 );
-const material = new THREE.MeshStandardMaterial({ color: 0x00ff67, wireframe: true });
-const ConeGeometry = new THREE.Mesh(geometry, material);
-scene.add(ConeGeometry);
+const geometry = new THREE.TetrahedronGeometry(10,0);
+const material = new THREE.MeshStandardMaterial({ color: 0xffffff});
+const TetrahedronGeometry = new THREE.Mesh(geometry, material);
+
+scene.add(TetrahedronGeometry);
+
+
+const pointLight = new THREE.PointLight(0xff0000,12,1000000000,0.5);
+pointLight.position.set(5, 19, 5);
+scene.add(pointLight);
+
+const ambientLight = new THREE.AmbientLight(0xffffff,0.3);
+scene.add(ambientLight);
+
+const lightHelper = new THREE.PointLightHelper(pointLight);
+scene.add(lightHelper);
 
 function animate() {
   requestAnimationFrame(animate);
-  ConeGeometry.rotation.x += 0.01;
-  ConeGeometry.rotation.y += 0.005;
-  ConeGeometry.rotation.z += 0.01;
+  TetrahedronGeometry.rotation.x += 0.1;
+  TetrahedronGeometry.rotation.y += 0.09;
+  TetrahedronGeometry.rotation.z += 0.04;
+
   renderer.render(scene, camera);
 }
 
